@@ -75,7 +75,7 @@ class _VogelToevoegenPageState extends State<VogelToevoegenPage> {
             "$githubStorageUrl${controllers['naam']!.text}/lijstfoto.jpg",
         wikipediaUrl: controllers['wikipediaUrl']!.text,
         vogelbeschermingUrl:
-            "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/${controllers['vogelbeschermingUrl']!.text}",
+            "https://www.vogelbescherming.nl/ontdek-vogels/kennis-over-vogels/vogelgids/vogel/${(controllers['vogelbeschermingUrl']!.text).replaceAll(' ', '-')}",
         fotosPerGebruiker: {
           'Kristiaan': FotoInfo(
             fotoUrl:

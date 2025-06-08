@@ -6,7 +6,6 @@ import 'package:birdhunt/tools/capitalize.dart';
 import 'package:birdhunt/tools/map_to_vogel.dart';
 import 'package:birdhunt/vogel/vogel.dart';
 import 'package:birdhunt/pages/vogel_toevoegen.dart';
-import 'package:birdhunt/vogel/voorbeeld_vogel_lijst.dart';
 import 'package:flutter/material.dart';
 import 'package:birdhunt/tools/hex_to_color.dart';
 import 'package:birdhunt/pages/vogel_detail_page.dart';
@@ -54,37 +53,7 @@ class _BirdListState extends State<BirdList> {
     _laadVogels();
   }
 
-  Future<void> _voegNieuweVogelToe(Vogel vogel) async {
-    // var tempVogels = [];
-    // var firebaseVogelMap = await fetchAlleVogelsAlsMap();
-    // for (var firebaseVogel in firebaseVogelMap) {
-    //   if (firebaseVogel['naam'] != 'voorbeeld_data') {
-    //     print(firebaseVogel['naam']);
-    //     tempVogels.add(vogelVanFirestoreMap(firebaseVogel));
-    //   }
-    // }
-
-    // setState(() {
-    //   for (var tempvogel in tempVogels) {
-    //     vogels.add(tempvogel);
-    //   }
-    //   vogels.add(vogel); // alleen synchronisch werk hier
-    // });
-
-    _laadVogels();
-  }
-
-  // Future<void> _testVogelFetchUpdate() async {
-  //   var firebaseVogelMap = await fetchAlleVogelsAlsMap();
-  //   for (var firebaseVogel in firebaseVogelMap) {
-  //     print(firebaseVogel['naam']);
-  //     vogels.add(vogel)
-  //   }
-
-  //   // setState(() {
-  //   //   vogels.add(vogel); // alleen synchronisch werk hier
-  //   // });
-  // }
+  Future<void> _voegNieuweVogelToe(Vogel vogel) => _laadVogels();
 
   @override
   Widget build(BuildContext context) {
@@ -225,18 +194,6 @@ class _BirdListState extends State<BirdList> {
               );
             },
           ),
-
-          // ! FIREBASE TESTS! ----------------------------------------------- !
-          // ElevatedButton(
-          //   onPressed: () => {
-          //     //fetchAlleVogels()
-          //     //print(testvogel())
-          //     _testVogelFetchUpdate()
-          //   },
-          //   child: Text("Fetch Vogels"),
-          // ),
-
-          // | -------------------------------------------------------------- |
         ],
       ),
       floatingActionButton: FloatingActionButton(
