@@ -1,3 +1,6 @@
+import 'package:birdhunt/firebase/vogel_families_functions.dart';
+import 'package:birdhunt/pages/vogel_familie_toevoegen.dart';
+import 'package:birdhunt/pages/vogel_families_overzicht.dart';
 import 'package:birdhunt/tools/hex_to_color.dart';
 import 'package:birdhunt/tools/map_to_vogel.dart';
 import 'package:birdhunt/vogel/vogel.dart';
@@ -22,6 +25,28 @@ class VogelToevoegenPage extends StatefulWidget {
 class _VogelToevoegenPageState extends State<VogelToevoegenPage> {
   final _formKey = GlobalKey<FormState>();
   String? gekozenVogelFamilie; // van de dropDownMenu! (vogelfamiliekeuze)
+  Map<String, String> vogelFamiliesFirebase = {};
+
+  Future<void> _laadVogelFamilies() async {
+    final families = await fetchAlleVogelFamiliesAlsMap();
+    final map = <String, String>{};
+
+    for (final familie in families) {
+      if (familie['naam'] != null && familie['hex'] != null) {
+        map[familie['naam']] = familie['hex'];
+      }
+    }
+
+    setState(() {
+      vogelFamiliesFirebase = map;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _laadVogelFamilies();
+  }
 
   final Map<String, TextEditingController> controllers = {
     'naam': TextEditingController(text: ''),
@@ -68,7 +93,8 @@ class _VogelToevoegenPageState extends State<VogelToevoegenPage> {
         naam: controllers['naam']!.text,
         latijnseNaam: controllers['latijnseNaam']!.text,
         familie: gekozenVogelFamilie!,
-        familieKleur: vogelFamilies[gekozenVogelFamilie!]!,
+        familieKleur: vogelFamiliesFirebase[gekozenVogelFamilie!]!,
+
         beschrijving: controllers['beschrijving']!.text,
         hoofdFotoUrl: controllers['hoofdFotoUrl']!.text,
         lijstFotoUrl:
@@ -159,7 +185,7 @@ class _VogelToevoegenPageState extends State<VogelToevoegenPage> {
                         controller: dropdownMenuController,
                         initialSelection: gekozenVogelFamilie,
                         dropdownMenuEntries:
-                            (vogelFamilies.keys.toList()..sort(
+                            (vogelFamiliesFirebase.keys.toList()..sort(
                                   (a, b) => a.toLowerCase().compareTo(
                                     b.toLowerCase(),
                                   ),
@@ -171,6 +197,7 @@ class _VogelToevoegenPageState extends State<VogelToevoegenPage> {
                                   ),
                                 )
                                 .toList(),
+
                         onSelected: (value) {
                           setState(() => gekozenVogelFamilie = value);
                         },
@@ -220,6 +247,34 @@ class _VogelToevoegenPageState extends State<VogelToevoegenPage> {
                         ),
                         onPressed: () async {
                           await _opslaan();
+                        },
+                      ),
+                      spacing,
+                      ElevatedButton.icon(
+                        icon: Icon(
+                          Icons.arrow_right_alt_sharp,
+                          color: hexToColor("#f4f1e5"),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.all(
+                            hexToColor("#454340"),
+                          ), // juiste kleur hier
+                        ),
+                        label: Text(
+                          "Vogelfamilie toevoegen?",
+                          style: TextStyle(
+                            color: hexToColor("#f4f1e5"),
+                          ), // tekstkleur juist hier
+                        ),
+                        onPressed: () async {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VogelFamilieToevoegenPage(
+                                onFamilieToegevoegd: (familie) {},
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ],

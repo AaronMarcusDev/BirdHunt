@@ -1,5 +1,6 @@
 // import 'package:birdhunt/firebase/vogel_firebase_functions.dart';
 // import 'package:birdhunt/tools/map_to_vogel.dart';
+import 'package:birdhunt/firebase/vogel_families_functions.dart';
 import 'package:birdhunt/firebase/vogel_firebase_functions.dart';
 import 'package:birdhunt/pages/informatie_page.dart';
 import 'package:birdhunt/tools/capitalize.dart';
@@ -90,6 +91,7 @@ class _BirdListState extends State<BirdList> {
               iconSize: 30,
               onPressed: () {
                 _laadVogels();
+                fetchAlleVogelFamiliesAlsMap();
               },
               color: hexToColor("#454340"),
             ),

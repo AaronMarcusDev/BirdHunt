@@ -6,9 +6,13 @@ import 'firebase/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const MaterialApp(title: 'BirdHunt', home: BirdList()));
+  runApp(
+    MaterialApp(
+      title: 'BirdHunt',
+      theme: ThemeData(fontFamily: 'DMSans'),
+      home: const BirdList(),
+    ),
+  );
 }
