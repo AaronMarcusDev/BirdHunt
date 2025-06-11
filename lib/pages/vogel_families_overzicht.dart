@@ -1,18 +1,12 @@
 // import 'package:birdhunt/firebase/vogel_firebase_functions.dart';
 // import 'package:birdhunt/tools/map_to_vogel.dart';
 import 'package:birdhunt/firebase/vogel_families_functions.dart';
-import 'package:birdhunt/firebase/vogel_firebase_functions.dart';
-import 'package:birdhunt/pages/informatie_page.dart';
 import 'package:birdhunt/pages/vogel_familie_toevoegen.dart';
 import 'package:birdhunt/tools/capitalize.dart';
-import 'package:birdhunt/tools/map_to_vogel.dart';
 import 'package:birdhunt/tools/map_to_vogel_familie.dart';
-import 'package:birdhunt/vogel/vogel.dart';
-import 'package:birdhunt/pages/vogel_toevoegen.dart';
 import 'package:birdhunt/vogel_families/vogel_families.dart';
 import 'package:flutter/material.dart';
 import 'package:birdhunt/tools/hex_to_color.dart';
-import 'package:birdhunt/pages/vogel_detail_page.dart';
 
 class VogelFamiliesOverzicht extends StatefulWidget {
   const VogelFamiliesOverzicht({super.key});

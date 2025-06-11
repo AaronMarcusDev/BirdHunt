@@ -1,5 +1,4 @@
 import 'package:birdhunt/tools/hex_to_color.dart';
-import 'package:birdhunt/tools/map_to_vogel.dart';
 import 'package:birdhunt/tools/map_to_vogel_familie.dart';
 import 'package:birdhunt/vogel_families/vogel_families.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

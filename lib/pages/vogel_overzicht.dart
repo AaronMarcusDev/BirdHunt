@@ -140,8 +140,8 @@ class _BirdListState extends State<BirdList> {
                         ),
                         child: Image.network(
                           vogel.lijstFotoUrl,
-                          height: 130,
-                          width: 130,
+                          height: 110,
+                          width: 110,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -155,7 +155,7 @@ class _BirdListState extends State<BirdList> {
                                 vogel.naam.capitalize(),
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.white,
                                 ),
                                 maxLines: 1,
@@ -167,7 +167,7 @@ class _BirdListState extends State<BirdList> {
                                 "Latijn: ${vogel.latijnseNaam}",
                                 style: const TextStyle(
                                   fontStyle: FontStyle.italic,
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Colors.white,
                                 ),
                                 maxLines: 1,
@@ -179,7 +179,7 @@ class _BirdListState extends State<BirdList> {
                                 "Familie: ${vogel.familie}",
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Colors.white,
                                 ),
                                 maxLines: 2,
